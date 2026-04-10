@@ -9,6 +9,10 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; }
         .gradient-bg { background: radial-gradient(circle at top right, #332b00, #000 40%); }
+        /* Hidden state for success message */
+        [data-fs-success] { display: none; }
+        .is-success [data-fs-success] { display: block; }
+        .is-success #contact-form { display: none; }
     </style>
 </head>
 <body class="gradient-bg">
@@ -24,14 +28,14 @@
         </a>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-24 md:py-40">
-        <h1 class="text-6xl md:text-8xl font-black leading-none mb-8">
+    <header class="max-w-7xl mx-auto px-6 py-24 md:py-40 text-center md:text-left">
+        <h1 class="text-5xl md:text-8xl font-black leading-none mb-8">
             Scale Your <br> <span class="text-yellow-400">Digital Presence.</span>
         </h1>
-        <p class="text-gray-400 text-xl max-w-2xl mb-10 leading-relaxed">
-            Helping creators and brands dominate the social ecosystem through data-driven management, viral content strategies, and elite aesthetics.
+        <p class="text-gray-400 text-xl max-w-2xl mb-10 leading-relaxed mx-auto md:mx-0">
+            Helping creators and brands dominate the social ecosystem through viral strategies and elite account management.
         </p>
-        <div class="flex space-x-4">
+        <div class="flex justify-center md:justify-start">
             <a href="#services" class="border-b-2 border-white pb-1 font-bold hover:text-yellow-400 hover:border-yellow-400 transition">
                 The Proof is in the Work 👀
             </a>
@@ -40,12 +44,12 @@
 
     <section id="services" class="bg-white text-black py-20">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black mb-12 uppercase">What We Offer?</h2>
+            <h2 class="text-4xl font-black mb-12 uppercase">What I Offer</h2>
             
             <div class="border-t border-black py-10 flex flex-col md:flex-row justify-between group hover:bg-yellow-400 transition-all px-4">
                 <div>
                     <h3 class="text-3xl font-bold uppercase">Account Management</h3>
-                    <p class="mt-4 text-gray-700 max-w-md">I handle the heavy lifting of scheduling, posting, and engagement so you can focus on creating.</p>
+                    <p class="mt-4 text-gray-700 max-w-md">Complete handling of scheduling, posting, and audience engagement across all major platforms.</p>
                 </div>
                 <div class="text-5xl opacity-20 group-hover:opacity-100 transition">01</div>
             </div>
@@ -53,7 +57,7 @@
             <div class="border-t border-black py-10 flex flex-col md:flex-row justify-between group hover:bg-yellow-400 transition-all px-4">
                 <div>
                     <h3 class="text-3xl font-bold uppercase">Growth Strategy</h3>
-                    <p class="mt-4 text-gray-700 max-w-md">Data-backed viral strategies based on my extensive experience in social media management.</p>
+                    <p class="mt-4 text-gray-700 max-w-md">Custom viral roadmaps designed to increase your reach and convert viewers into loyal followers.</p>
                 </div>
                 <div class="text-5xl opacity-20 group-hover:opacity-100 transition">02</div>
             </div>
@@ -61,7 +65,7 @@
             <div class="border-t border-y border-black py-10 flex flex-col md:flex-row justify-between group hover:bg-yellow-400 transition-all px-4">
                 <div>
                     <h3 class="text-3xl font-bold uppercase">Content Production</h3>
-                    <p class="mt-4 text-gray-700 max-w-md">Professional aesthetic management to ensure your brand looks high-end across all platforms.</p>
+                    <p class="mt-4 text-gray-700 max-w-md">High-end aesthetic direction and video editing to ensure your brand stands out in the feed.</p>
                 </div>
                 <div class="text-5xl opacity-20 group-hover:opacity-100 transition">03</div>
             </div>
@@ -70,38 +74,62 @@
 
     <section id="contact" class="py-24 max-w-3xl mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-black mb-4">Grow Your Brand</h2>
-            <p class="text-gray-400 uppercase tracking-widest text-sm">Fill in your details to start the collaboration</p>
+            <h2 class="text-5xl font-black mb-4">Let's Talk</h2>
+            
+            <div data-fs-success class="bg-yellow-400 text-black p-8 rounded-2xl font-bold text-xl">
+                🚀 Details Received! I'll get back to you shortly.
+            </div>
+            
+            <p id="form-desc" class="text-gray-400 uppercase tracking-widest text-sm">Enter your details to start growing</p>
         </div>
 
-        <form action="https://formspree.io/f/mojpoeeb" method="POST" class="space-y-8">
+        <form id="contact-form" class="space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Your Name</label>
-                    <input type="text" name="name" required class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg">
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
+                    <input type="text" name="name" required data-fs-field class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg">
+                    <span data-fs-error="name" class="text-red-500 text-xs"></span>
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
-                    <input type="email" name="email" required class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg">
+                    <input type="email" name="email" required data-fs-field class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg">
+                    <span data-fs-error="email" class="text-red-500 text-xs"></span>
                 </div>
             </div>
             <div>
-                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Social Media Handle (@)</label>
-                <input type="text" name="handle" placeholder="@username" class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg">
+                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Social Media Handle / Link</label>
+                <input type="text" name="handle" placeholder="@username" data-fs-field class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg">
             </div>
             <div>
-                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Current Goals / Message</label>
-                <textarea name="message" rows="4" required class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg"></textarea>
+                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Message</label>
+                <textarea name="message" rows="4" required data-fs-field class="w-full bg-transparent border-b border-gray-800 py-3 focus:outline-none focus:border-yellow-400 transition text-lg"></textarea>
+                <span data-fs-error="message" class="text-red-500 text-xs"></span>
             </div>
-            <button type="submit" class="w-full bg-yellow-400 text-black font-black py-5 rounded-full uppercase tracking-widest hover:bg-white transition-all transform hover:scale-[1.02]">
+            
+            <div data-fs-error class="text-red-500 font-bold mb-4"></div>
+
+            <button type="submit" data-fs-submit-btn class="w-full bg-yellow-400 text-black font-black py-5 rounded-full uppercase tracking-widest hover:bg-white transition-all transform hover:scale-[1.02]">
                 Submit Details
             </button>
         </form>
     </section>
 
     <footer class="p-10 border-t border-gray-900 text-center text-gray-600 text-xs tracking-widest uppercase">
-        <p>&copy; 2026 Made with Precision for Content Creators</p>
+        <p>&copy; 2026 Crafted for Professional Growth</p>
     </footer>
+
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { 
+            formElement: '#contact-form', 
+            formId: 'mojpoeeb',
+            onSuccess: function() {
+                document.getElementById('contact').classList.add('is-success');
+                document.getElementById('form-desc').style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
